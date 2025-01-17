@@ -214,13 +214,64 @@
   baz();
   arrowFoo();
 
-  // son objetos
-  foo.name = 'Función declarada';
-  baz.name = 'Función por asignación';
-  arrowFoo.name = 'Función ';
+  // son objetos de primera clase
+  foo.title = 'Función declarada';
+  baz.title = 'Función por asignación';
+  arrowFoo.title = 'Arrow función';
+
+  console.log(foo, baz, arrowFoo);
 }
 {
   //objects
-  const foo = {};
-  const baz2 = new Object();
+  const obj1 = new Object(); //manera más formal pero no se usa
+
+  ///objeto literal (JSON) : Douglas Crockford
+  const obj = {
+    name: 'Kika',
+    age: 51,
+    isUser: true,
+  };
+
+  obj1.name = 'Kika';
+  obj1.age = 51;
+  obj1.isUser = true;
+
+  //obj1 = (), TypeError:Assignement
+  console.log(obj1, obj);
+
+  obj1.name = 'Nicola';
+  delete obj1.isUser;
+
+  console.log(obj);
+}
+
+{
+  //Cómo accedo a las propiedades -dot notation-
+  const obj = {
+    name: 'Kika',
+    age: 51,
+    isUser: true,
+  };
+
+  console.log(obj.age);
+
+  //Cómo accedo a las propiedades -bracket notation-
+  const propertyName = 'name';
+
+  console.log(obj[propertyName]);
+
+  for (const key in obj) {
+    console.log(`La propiedad ${key} vale ${obj[key]}`);
+  }
+}
+
+{
+  //ARRAYS
+  const data = [1, 2, 3];
+  const data2 = new Array(1, 2, 3);
+
+  console.log(typeof data, typeof data2);
+
+  data.name = 'Array de números';
+  console.log(data, data2);
 }
