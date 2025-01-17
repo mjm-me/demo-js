@@ -1,0 +1,9 @@
+{
+  "name": "demo-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "prettier": {
+    "singleQuote": true
+  }
+}
