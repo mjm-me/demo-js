@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title>JavaScript Básico</title>
+   <script src="script.js"></script>
+</head>
+
+<body>
+   <div>
+      <h2 style="color: blueviolet">Atributos relacionados con eventos del ratón</h2>
+      <!-- Evento onclick -->
+      <p onclick="alert('¡Has hecho clic!')">Haz clic aquí con el botón izquierdo para ver un mensaje.</p>
+      <!-- Evento ondblclick -->
+      <p ondblclick="alert('¡Doble clic!')">Haz doble clic aquí para ver un mensaje.</p>
+      <!-- Evento onmousedown -->
+      <p onmousedown="alert('¡Mouse presionado!')">Presiona el botón del ratón aquí para ver un mensaje.</p>
+      <!-- Evento onmouseup -->
+      <p onmouseup="alert('¡Mouse liberado!')">Libera el botón del ratón aquí para ver un mensaje.</p>
+      <!-- Evento onmouseenter -->
+      <p onmouseenter="alert('¡Mouse entrando!')">Mueve el cursor del ratón sobre este párrafo para ver un mensaje.</p>
+      <!-- Evento onmouseleave -->
+      <p onmouseleave="alert('¡Mouse saliendo!')">Mueve el cursor del ratón fuera de este párrafo para ver un mensaje.
+      </p>
+   </div>
+
+   <div>
+      <h2 style="color: blueviolet">Atributos relacionados con eventos generados por el teclado</h2>
+      <h3 style="color: rgb(187, 104, 232)">Se aplican a elementos que aceptan una entrada del usuario, como son: input
+         y
+         textarea
+      </h3>
+      <!-- Evento onkeydown -->
+      <textarea onkeydown="alert('Se ha pulsado una tecla')" placeholder="Presiona una tecla"></textarea>
+      <!-- Evento onkeyup -->
+      <input type="text" onkeyup="alert('Se ha liberado una tecla')" placeholder="Libera una tecla">
+   </div>
+
+   <div>
+      <h2 style="color: blueviolet">Atributos asociados a un documento</h2>
+      <!-- Usando un elemento de imagen para el evento onload -->
+      <img src="imagen.jpg" onload="alert('La imagen se ha cargado correctamente')"
+         onerror="alert('Error al cargar la imagen')">
+   </div>
+
+   <div>
+      <h2 style="color: blueviolet">JS incorporado al HTML mediante la etiqueta script</h2>
+      <span>Haz clic aquí</span>
+      <script>
+         // Este es el código JavaScript integrado
+         // El siguiente código muestra una alerta cuando se hace clic en el span
+         var parrafo = document.querySelector("span");
+         parrafo.addEventListener("click", function () {
+            alert("¡Hola Mundo!");
+         });
+      </script>
+      <h4>Probando JS</h4>
+      <script>
+         var title = document.querySelector("h4");
+         title.addEventListener("click", function () {
+            alert('Soy la hostia de buena, ya lo voy pillando')
+         })
+      </script>
+   </div>
+
+
+
+</body>
+
+</html>
