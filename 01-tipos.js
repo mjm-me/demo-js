@@ -275,3 +275,74 @@
   data.name = 'Array de números';
   console.log(data, data2);
 }
+
+//Mutabilidad
+{
+  //reasignación de valores inmutables
+  let y = 22;
+  let x = 22;
+  x = 24;
+
+  // const + valor primitivo inmutable = CONSTANTE
+  const c = 23;
+  //c = 34; NUNCA se puede hacer  daría un error: Error TypeError: Assignement to constant variable
+
+  //const + objeto = NO es CONSTANTE, es mutable
+  const obj = {};
+  //obj = {}; NUNCA se puede hacer  daría un error: Error TypeError: Assignement to constant variable
+  obj.name = 'Lola'; //SÏ se puede  cambiar las propiedades del objeto
+
+  //const + objeto + Object.freeze = CONSTANTE
+  const EMPRESA = { brand: 'APPLE', address: 'calle del álamo' };
+  Object.freeze(EMPRESA); //consigo que la empresa sea constante y no se pueda cambiar nunca su valor
+}
+
+//OBJETOS
+{
+  const obj1 = new Object(); //funciones constructores
+
+  const obj = {
+    name: 'Juan',
+    age: 15,
+    isUser: true,
+  };
+  obj.name = 'Juan';
+  obj.age = 15;
+  obj.isUser = true;
+
+  const aData = new Array(1, 3, 5, 2, 8);
+  console.log(aData); // [ 1, 3, 5, 2, 8 ]
+  console.log(typeof aData); // object
+}
+
+// Uso de métodos (de instancia) para un objeto
+{
+  const obj = {
+    greet: () => 'Hola mundo',
+  };
+  console.log(obj.greet());
+  [].at(-1);
+  greet.toLowerCas();
+
+  //Métodos estáticos (de clase)
+  Object.freeze(obj);
+
+  const data = [1, 2, 3];
+  console.log(typeof data);
+
+  Array.isArray(data);
+
+  Math.random();
+  JSON.stringify;
+}
+
+{
+  //Wrapper objetcs de los primitivos
+
+  let foo = 'Hola';
+  console.log(foo.toUpperCase());
+  console.log(foo);
+
+  let n = 22;
+  console.log(n.toFixed(2));
+}
