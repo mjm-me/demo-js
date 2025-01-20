@@ -299,50 +299,53 @@
 
 //OBJETOS
 {
-  const obj1 = new Object(); //funciones constructores
-
+  //  Métodos (de instancia)
+  const greet = () => 'Hola Mundo';
   const obj = {
-    name: 'Juan',
-    age: 15,
-    isUser: true,
+    greet: function () {
+      return 'Hola Mundo';
+    },
   };
-  obj.name = 'Juan';
-  obj.age = 15;
-  obj.isUser = true;
 
-  const aData = new Array(1, 3, 5, 2, 8);
-  console.log(aData); // [ 1, 3, 5, 2, 8 ]
-  console.log(typeof aData); // object
-}
-
-// Uso de métodos (de instancia) para un objeto
-{
-  const obj = {
-    greet: () => 'Hola mundo',
-  };
   console.log(obj.greet());
   [].at(-1);
-  greet.toLowerCas();
+  ''.toLowerCase();
+}
+{
+  // Métodos estáticos (de clase)
+  const obj = {
+    greet: function () {
+      return 'Hola Mundo';
+    },
+  };
 
-  //Métodos estáticos (de clase)
   Object.freeze(obj);
 
-  const data = [1, 2, 3];
+  const data = [];
   console.log(typeof data);
 
-  Array.isArray(data);
+  Array.isArray(data); // true
 
   Math.random();
-  JSON.stringify;
+  // new JSON();
 }
-
 {
-  //Wrapper objetcs de los primitivos
+  // Wrapper objects de los primitivos
+
+  const d = '2';
+  console.log(22 / d);
 
   let foo = 'Hola';
-  console.log(foo.toUpperCase());
+
+  // const z = new String()
+
+  // Ejemplo de coercion a String
+  console.log(foo.toLowerCase());
   console.log(foo);
 
   let n = 22;
   console.log(n.toFixed(2));
+
+  let big = 2n;
+  big.toString();
 }

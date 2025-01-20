@@ -1,4 +1,4 @@
-import { errorDivideZero } from './03-errors';
+import { errorDivideZero } from './03-errors.js';
 
 //Expresiones ---> yo le pregunto algo a JS ¿? ---> y me responde con un valor
 
