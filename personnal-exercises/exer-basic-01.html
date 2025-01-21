@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Coste de Viaje</title>
+</head>
+
+<body>
+
+  <script>
+    let alojamiento = parseFloat(
+      prompt('Ingrese el coste estimado de alojamiento: ')
+    );
+
+    let alimentacion = parseFloat(
+      prompt('Ingrese el coste estimado de sus comidas: ')
+    );
+
+    let entretenimiento = parseFloat(
+      prompt('Ingrese el coste estimado de su entretenimiento: ')
+    );
+
+    let costeTotal = alojamiento + alimentacion + entretenimiento;
+    alert('El coste total del viaje es: ' + costeTotal.toFixed(2) + '€');
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Índice de Masa Corporal (IMC)</title>
+</head>
+
+<body>
+
+  <script>
+    let peso = parseFloat(
+      prompt('Por favor, inserte peso en kilogramos: ')
+    );
+
+    let altura = parseFloat(
+      prompt('Por favor, inserte su altura en metros: ')
+    );
+
+    let imc = peso / (altura ** 2);
+    alert('Su IMC es ' + imc.toFixed(2));
+
+
+    if (imc < 18.5) {
+      alert('Clasificación: Bajo peso');
+    } else if (imc >= 18.5 && imc < 25) {
+      alert('Clasificación: peso normal');
+    } else if (imc >= 25 && imc < 30) {
+      alert('Clasificación: sobrepeso');
+    } else {
+      alert('Clasificación: obesidad');
+    }
+
+  </script>
+</body>
+
+</html>
