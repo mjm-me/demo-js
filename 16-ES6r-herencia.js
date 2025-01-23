@@ -14,7 +14,7 @@ class User extends Person {
     User.usersNumber++;
   };
 
-  constructor(name, age, role) {
+  constructor({ name, age = 22, role }) {
     super(name, age);
     this.role = role;
     User.countUsers();
@@ -26,18 +26,16 @@ class User extends Person {
   }
 }
 
-User.usersNumber = 0;
-User.countUsers = function () {
-  User.usersNumber++;
-};
+const user1 = new User({ role: 'admin', name: 'Pepe' });
+const user2 = new User({ name: 'Juan', role: 'use', age: 24 });
 
-
-const user1 = new Person('Pepe', 22, 'admin');
-const user2 = new Person('Juan', 24, 'user');
-
+// console.log(user1, user2);
+// user1.address = 'Soria';
+// user1.name = 'Jose';
+// delete user1.age;
 console.log(user1, user2);
 
 user1.greet();
 user2.greet();
 
-console.log(User.usersNumber);
+// console.log(User.usersNumber);

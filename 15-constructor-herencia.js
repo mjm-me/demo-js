@@ -13,24 +13,29 @@ function User(name, age, role) {
   Person.call(this, name, age);
 }
 
+User.prototype.greet = function () {
+  Person.prototype.greet.apply(this);
+  console.log(`Hola soy ${this.role}`);
+};
+
 User.usersNumber = 0;
 User.countUsers = function () {
   User.usersNumber++;
 };
 
-Object.setPrototypeOf.prototype(User.prototype, Person.prototype);
-//User.prototype.__proto__ = Person.prototype;
+Object.setPrototypeOf(User.prototype, Person.prototype);
+// User.prototype.__proto__ = Person.prototype;
 
-const user1 = new Person('Pepe', 22, 'admin');
-const user2 = new Person('Juan', 24, 'user');
+const user1 = new User('Pepe', 22, 'admin');
+const user2 = new User('Juan', 24, 'user');
 
-//console.log(user1, user2);
-//user1.address = 'Soria';
-//user1.name = 'Jose';
-//delete user1.age;
+// console.log(user1, user2);
+// user1.address = 'Soria';
+// user1.name = 'Jose';
+// delete user1.age;
 console.log(user1, user2);
 
 user1.greet();
 user2.greet();
 
-console.log(User.usersNumber);
+// console.log(User.usersNumber);

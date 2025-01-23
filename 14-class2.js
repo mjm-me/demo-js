@@ -1,55 +1,3 @@
-class User {
-  static usersNumber = 0;
-  static countUsers() {
-    User.usersNumber++;
-  }
-  static {
-    console.log('Load class USER');
-  }
-
-  #name;
-  #age;
-  constructor(name, age) {
-    this.#name = name;
-    this.#age = age;
-    User.countUsers();
-  }
-
-  // get name() {
-  //     return this.#name;
-  // }
-
-  // set name(name) {
-  //     this.#name = name;
-  // }
-
-  greet() {
-    console.log(`Hola, soy ${this.#name} y tengo ${this.#age} años`);
-  }
-
-  grow() {
-    this.#age++;
-  }
-}
-
-const user1 = new User('Pepe', 22);
-const user2 = new User('Juan', 24);
-
-console.log(user1, user2);
-user1.address = 'Soria';
-// // user1.#name = 'Jose';
-// // delete user1.#name;
-console.log(user1, user2);
-
-user1.grow();
-user1.greet();
-user2.greet();
-
-console.log(User.usersNumber);
-
-// user1.name = 'Jose';
-// console.log(user1.name);
-
 // Clase define factura (Invoice)
 // Numero de factura
 // Concepto
@@ -90,30 +38,48 @@ export class Invoice {
   // declaración de propiedades preferiblemente privadas
   #id = Invoice.#getID();
   #client;
-  #product;
-  #amount;
-  #unityPrice;
+  #products; // Array de productos
   #iva;
 
   // constructor
-  constructor(client, product, amount, unityPrice, iva = 1.21) {
-    this.#product = product;
-    this.#amount = amount;
-    this.#unityPrice = unityPrice;
+  constructor(client, products, iva = 1.21) {
+    this.#products = products;
     this.#iva = iva;
     this.#client = client;
   }
+
+  // Método para obtener el cliente
   get client() {
     return this.#client;
   }
 
-  #calculatePrice() {
-    return this.#amount * this.#unityPrice;
+  // Método para obtener detalles de la factura
+  getDetails() {
+    return {
+      id: this.#id,
+      client: {
+        name: this.#client.name,
+        nif: this.#client.nif,
+      },
+      products: this.#products,
+      iva: this.#iva,
+    };
+  }
+
+  #calculateTotalPrice() {
+    return this.#products.reduce((total, product) => {
+      return total + product.amount * product.unityPrice;
+    }, 0);
   }
 
   printInvoice() {
-    const price = this.#calculatePrice();
+    const price = this.#calculateTotalPrice();
     const total = price * this.#iva;
+
+    let productDetails = '';
+    this.#products.forEach((product) => {
+      productDetails += `${product.name} + ${product.amount} unidades a ${product.unityPrice}€ \n`;
+    });
 
     const invoice = `
         ${Invoice.#brand.name}
@@ -124,7 +90,7 @@ export class Invoice {
         Nif: ${this.#client.nif}
 
         Factura ${this.#id}
-        ${this.#product} + ${this.#amount} unidades a ${this.#unityPrice}€ 
+        ${productDetails}
         Total.................. ${price}€
         ----------------------------------------------
         Total + IVA ........... ${total}
@@ -133,20 +99,23 @@ export class Invoice {
   }
 }
 
+// Ejemplo de uso
 const client1 = new Company('5656565843D', 'Acme');
-const invoice1 = new Invoice(client1, 'apples', 20, 4, 1.04);
-const invoice2 = new Invoice(
-  new Company('6567565843D', 'CAS'),
-  'mobile',
-  1,
-  400
-);
-const invoice3 = new Invoice(invoice2.client, 'apples', 20, 4, 1.04);
+const products1 = [
+  { name: 'apples', amount: 20, unityPrice: 4 },
+  { name: 'oranges', amount: 10, unityPrice: 3 },
+];
+const invoice1 = new Invoice(client1, products1, 1.04);
 
-console.log(invoice1, invoice2);
+const products2 = [
+  { name: 'mobile', amount: 1, unityPrice: 400 },
+  { name: 'charger', amount: 2, unityPrice: 55 },
+];
+const invoice2 = new Invoice(new Company('6567565843D', 'CAS'), products2);
+
+console.log(invoice1.getDetails(), invoice2.getDetails());
 invoice1.printInvoice();
 invoice2.printInvoice();
-invoice3.printInvoice();
 
 // Relaciones entre clases
 // Agregación / Composición v. Asociación
