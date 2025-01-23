@@ -25,18 +25,57 @@ donald.hablar(); // 'Cuak'
 
 console.log(pato, donald);
 
-/****************** */
-class Personaje {
+/******** métodos públicos ***********/
+{
+  class Personaje {
+    name = 'Mario';
+
+    constructor() {
+      this.hablar();
+    }
+
+    hablar() {
+      console.log("It's me, Mario!");
+    }
+  }
+
+  const mario = new Personaje(); // It's me, Mario! (se ha accedido a hablar() desde dentro de la clase)
+  mario.hablar(); // It's me, Mario! (se ha accedido a hablar() desde fuera de la clase)
+}
+
+/******** métodos privados ***********/
+class Personaje1 {
   name = 'Mario';
 
   constructor() {
-    this.hablar();
+    this.#hablar();
   }
 
-  hablar() {
+  #hablar() {
     console.log("It's me, Mario!");
   }
 }
 
-const mario = new Personaje(); // It's me, Mario! (se ha accedido a hablar() desde dentro de la clase)
-mario.hablar(); // It's me, Mario! (se ha accedido a hablar() desde fuera de la clase)
+{
+  class Personaje1 {
+    name = 'Mario';
+
+    constructor() {
+      this.#hablar1();
+    }
+
+    #hablar1() {
+      console.log("It's me, Mario!");
+    }
+  }
+
+  const mario1 = new Personaje1(); // It's me, Mario! (se ha accedido a #hablar() desde dentro de la clase)
+
+  // Da error, no se permite acceder a un método privado desde fuera de la clase
+  // Uncaught SyntaxError: Private field '#hablar' must be declared in an enclosing class
+  mario.#hablar1();
+
+  // Da error, el método hablar() no existe, ya que el nombre del método es #hablar()
+  // Uncaught TypeError: mario.hablar is not a function
+  mario.hablar1();
+}
